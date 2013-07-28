@@ -23,7 +23,7 @@
       (contains? mines [x (- y 1)]) true
       (contains? mines [(+ x 1) (+ y 1)]) true
       (contains? mines [(+ x 1) (- y 1)]) true
-      (contains? mines [(+ x 1) (+ y 1)]) true
+      (contains? mines [(- x 1) (+ y 1)]) true
       (contains? mines [(- x 1) (- y 1)]) true
       :else false)))
 
