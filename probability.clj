@@ -1,6 +1,6 @@
 (def  default-board-size 9) ; default-board-size x default-board-size
-(def  default-number-mines 10) ; default-board-size x default-board-size
-(def  default-number-samples 1000000) ; default-board-size x default-board-size
+(def  default-number-mines 10)
+(def  default-number-samples 1000000)
 
 (defn new-mine [board-size current-mines]
   (let [mine-pos [(rand-int board-size), (rand-int board-size)]]
