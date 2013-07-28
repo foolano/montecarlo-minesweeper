@@ -28,8 +28,7 @@
       :else false)))
 
 (defn all-adjacents? [mines]
-  (every? #(has-adjacent? % mines) mines)
-)
+  (every? #(has-adjacent? % mines) mines))
 
 (defn random-var-function [mines]
   (if (all-adjacents? mines)
@@ -44,7 +43,4 @@
         (map
           random-var-function
           (repeatedly default-number-samples (fn [] (generate-mines default-board-size default-number-mines)))))
-      default-number-samples
-    )
-  )
-)
+      default-number-samples)))
