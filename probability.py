@@ -15,27 +15,13 @@ def generate_mines(board_size, num_of_mines):
 
 def has_adjacent(pos, mines):
     x, y = pos
-    if (x + 1, y) in mines:
-        return True
-    if (x - 1, y) in mines:
-        return True
-    if (x, y + 1) in mines:
-        return True
-    if (x, y - 1) in mines:
-        return True
-    if (x + 1, y + 1) in mines:
-        return True
-    if (x + 1, y - 1) in mines:
-        return True
-    if (x - 1, y + 1) in mines:
-        return True
-    if (x - 1, y - 1) in mines:
-        return True
-    return False
+    return sets.Set([(x + 1, y), (x -1, y), (x, y + 1), (x, y -1),
+                       (x + 1, y + 1), (x + 1 ,y - 1),
+                       (x - 1, y + 1), (x - 1, y - 1)]).intersection(mines)
 
 def random_var_function(mines):
     for mine in mines:
-        if not (has_adjacent(mine, mines)):
+        if not has_adjacent(mine, mines):
             return 0
     return 1
 
