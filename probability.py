@@ -10,10 +10,8 @@ def generate_mines(board_size, num_of_mines):
     return [(i / BOARD_SIZE, i % BOARD_SIZE) for i in random.sample(range(0, BOARD_SIZE**2), MINES)]
 
 def adjacents(pos, mines):
-    x, y = pos
-    return sets.Set([(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1),
-                       (x + 1, y + 1), (x + 1 ,y - 1),
-                       (x - 1, y + 1), (x - 1, y - 1)]).intersection(mines)
+    rg = range(-1, 2)
+    return sets.Set([(pos[0] + i, pos[1] + j) for i in rg for j in rg if (i or j)]).intersection(mines)
 
 def random_var_function(mines):
     can_reach = adjacents(mines.pop(), mines)
@@ -24,4 +22,4 @@ def random_var_function(mines):
             can_reach = can_reach.union(adjacents(pos, mines))
     return int(not bool(mines))
 
-print sum([random_var_function(generate_mines(BOARD_SIZE, MINES)) for i in range(0, SAMPLES)]) / float(SAMPLES)
+print sum([random_var_function(generate_mines(BOARD_SIZE, MINES)) for i in xrange(0, SAMPLES)]) / float(SAMPLES)
